@@ -1,6 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<h4 class="d-flex justify-content-between mb-4">
+  <span>Posts</span>
+  <%= link_to "New post", new_post_path, class: 'btn btn-primary' %>
+</h4>
 
-<h1>Posts</h1>
 
 <div id="posts">
   <% @posts.each do |post| %>
@@ -11,4 +13,3 @@
   <% end %>
 </div>
 
-<%= link_to "New post", new_post_path %>
