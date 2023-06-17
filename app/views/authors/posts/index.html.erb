@@ -3,13 +3,13 @@
   <%= link_to "New post", new_post_path, class: 'btn btn-primary' %>
 </h4>
 
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+<% @posts.each do |post| %>
+  <%= link_to edit_post_path(post), class: "text-decoration-none" do %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1 text-dark"><%= post.title %></h5>
+        <p class="text-secondary mb-0"><%= post.description %></p>
+      </div>
+    </div>
   <% end %>
-</div>
-
+<% end %>
