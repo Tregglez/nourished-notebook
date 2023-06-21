@@ -18,13 +18,13 @@ module Authors
     # PATCH/PUT /elements/1
     def update
       @element.update(element_params)
-        redirect_to edit_post_path(@element.post)
+      redirect_to edit_post_path(@element.post)
     end
   
     # DELETE /elements/1
     def destroy
       @element.destroy
-      redirect_to elements_url, notice: "Element was successfully destroyed.", status: :see_other
+      redirect_to edit_post_path(@element.post), status: :see_other
     end
   
     private
@@ -40,7 +40,7 @@ module Authors
   
       # Only allow a list of trusted parameters through.
       def element_params
-        params.require(:element).permit(:element_type, :content)
+        params.require(:element).permit(:element_type, :content, :image)
       end
   end
 end

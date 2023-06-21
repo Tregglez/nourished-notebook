@@ -5,10 +5,8 @@ import "trix";
 import "@rails/actiontext";
 import Sortable from 'sortablejs';
 
-
 document.addEventListener('turbo:load', () => {
-
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (event) => {
     let element = event.target.closest('.paragraph-content');
     if (!element) return;
 
@@ -16,7 +14,7 @@ document.addEventListener('turbo:load', () => {
     element.nextElementSibling.classList.remove('d-none');
   });
 
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (event) => {
     if (!event.target.matches('.cancel')) return;
 
     event.preventDefault();
@@ -26,6 +24,7 @@ document.addEventListener('turbo:load', () => {
     element.classList.add('d-none');
     element.previousElementSibling.classList.remove('d-none');
   });
+
   let sortable_elements = document.getElementById('elements');
   Sortable.create(sortable_elements, { animation: 150 });
 });
