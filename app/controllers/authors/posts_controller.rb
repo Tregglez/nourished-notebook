@@ -22,7 +22,7 @@ module Authors
       @post = current_author.posts.build(post_params)
 
       if @post.save
-        redirect_to @post, notice: "Post was successfully created."
+        redirect_to edit_post_path(@post)
       else
         render :new, status: :unprocessable_entity
       end
@@ -31,7 +31,7 @@ module Authors
     # PATCH/PUT /posts/1
     def update
       if @post.update(post_params)
-        redirect_to @post, notice: "Post was successfully updated."
+        redirect_to edit_post_path(@post)
       else
         render :edit, status: :unprocessable_entity
       end
@@ -40,7 +40,7 @@ module Authors
     # DELETE /posts/1
     def destroy
       @post.destroy
-      redirect_to posts_url, notice: "Post was successfully destroyed.", status: :see_other
+      redirect_to posts_url, status: :see_other
     end
 
     private
@@ -51,7 +51,7 @@ module Authors
 
       # Only allow a list of trusted parameters through.
       def post_params
-        params.require(:post).permit(:title, :description)
+        params.require(:post).permit(:title, :description, :header_image)
       end
   end
 end
